@@ -18,7 +18,6 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 * `./cert` 保存 XRay 所需证书；
 * `./nginx` 保存 Nginx 的配置文件、日志和网页内容；
 * `./dbdata` 保存 `pgsql` 的数据库配置与文件；（容器初次运行后自动生成）
-* `./cert.sh` 实现证书的申请应用和自动更新（需要预先安装 acme.sh）;
 * `./docker-compose.yml` 控制容器挂载卷、环境变量等；
 
 ### 容器组成
