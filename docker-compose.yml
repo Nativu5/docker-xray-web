@@ -1,0 +1,65 @@
+version: "3"
+services: 
+    xray:
+        image: teddysun/xray
+        container_name: xray
+        restart: always
+        environment: 
+            TZ: Asia/Shanghai
+        ports: 
+            - 443:443
+        volumes: 
+            - ./xray/config:/etc/xray
+            - ./xray/logs:/var/log/xray
+            - ./cert:/home/root/cert
+        networks: 
+            - dockernet
+
+    php:
+        image: nat1vus/php-fpm-pgsql
+        container_name: php-fpm-pgsql
+        restart: always
+        environment: 
+            TZ: Asia/Shanghai
+        volumes: 
+            - ./nginx/www:/var/www
+        depends_on: 
+            - db
+        networks: 
+            - dockernet
+
+    web:
+        image: nginx:alpine
+        container_name: nginx
+        restart: always
+        environment: 
+            TZ: Asia/Shanghai
+        ports:
+            - 80:80
+        volumes: 
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/www:/var/www
+            - ./nginx/nginx_logs:/var/log/nginx
+            - ./nginx/web_logs:/etc/nginx/logs
+            - ./cert:/etc/nginx/ssl
+        depends_on: 
+            - php
+        networks: 
+            - dockernet
+
+    db:
+        image: postgres:alpine
+        container_name: pgsql
+        restart: always
+        environment: 
+            # POSTGRES_USER: (Optional)
+            POSTGRES_PASSWORD: Your_Password_here
+            # POSTGRES_DB: (Optional)
+            TZ: Asia/Shanghai
+        volumes:
+            - ./dbdata:/var/lib/postgresql/data
+        networks: 
+            - dockernet
+        
+networks: 
+    dockernet:
