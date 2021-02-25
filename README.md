@@ -1,4 +1,4 @@
-# docker-xray-typecho
+# docker-xray-web
 
 通过 Docker-compose 简易部署 [Xray-core](https://github.com/XTLS/Xray-core) 和 Web 服务（**以 Nginx + PostgreSQL + Typecho 博客程序为例**）。
 
@@ -114,5 +114,5 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
 * ~~目前 Xray 不会判断访问的域名，即不能实现用户访问 yourdomain.com 和 sub.yourdomain.com 时进入两个不同的站点。~~ 貌似有办法解决 SNI 分流，但有些麻烦：[integrated-examples/v2ray(other configuration) at master · lxhao61/integrated-examples (github.com)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(other configuration))
 
-* 默认的 Xray 配置不能通过 CDN，您可以自定义 Xray 配置文件来实现这一功能。
+* 默认的 Xray 配置不能通过 CDN，但您可以自定义 Xray 配置文件来实现这一功能。
 
