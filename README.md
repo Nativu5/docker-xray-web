@@ -8,7 +8,7 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
 本项目参考 [小小白白话文 :: Project X (xtls.github.io)](https://xtls.github.io/documents/level-0/) ，通过 Docker-compose 在 Xray 安装的同时部署了 Web 服务，方便建立博客 + 搭建梯子。
 
-原理：Nginx 监听宿主机 80 端口，将流量重定向至 443 端口。而 Xray 监听宿主机 443 端口，识别出 Vless 协议的流量后按照 Xray 设置的规则处理，非 Vless 流量全部转发至 nginx容器的 8080 端口（即网站）。
+原理：Nginx 监听宿主机 80 端口，将流量重定向至 443 端口。而 Xray 监听宿主机 443 端口，识别出 Vless 协议的流量后按照 Xray 设置的规则处理，非 Vless 流量全部转发至 Nginx 容器的 8080 端口（即网站）。
 
 [回落 (fallbacks) 功能简析 :: Project X (xtls.github.io)](https://xtls.github.io/documents/level-1/fallbacks-lv1/)
 
@@ -112,7 +112,7 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
   以启用全站 HTTPS 加密。
 
-* 目前 Xray 不会判断访问的域名，即不能实现用户访问 yourdomain.com 和 sub.yourdomain.com 时进入两个不同的站点。
+* ~~目前 Xray 不会判断访问的域名，即不能实现用户访问 yourdomain.com 和 sub.yourdomain.com 时进入两个不同的站点。~~ 貌似有办法解决 SNI 分流，但有些麻烦：[integrated-examples/v2ray(other configuration) at master · lxhao61/integrated-examples (github.com)](https://github.com/lxhao61/integrated-examples/tree/master/v2ray(other configuration))
 
 * 默认的 Xray 配置不能通过 CDN，您可以自定义 Xray 配置文件来实现这一功能。
 
