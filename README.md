@@ -126,3 +126,9 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
 * 默认的 Xray 配置不能通过 CDN，但您可以自定义 Xray 配置文件来实现这一功能。
 
+## 免责声明
+
+> 本项目仅用于研究 Docker-compose、Xray、Nginx 等软件的使用。
+> 
+> 使用者在使用该项目时应当遵守相关法律法规的约束，本项目作者不因使用者的违法使用承担任何责任。
+> 本项目的其他副本（包括但不仅限于离线储存、fork 项目）在保持代码完全相同情况下，享有和本免责声明相同的免责条款；反之不然。因不当储存、复制和扩散导致的、无限的风险与责任由相关使用者承担，与本项目无关。
