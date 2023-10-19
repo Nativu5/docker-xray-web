@@ -1,5 +1,7 @@
 # docker-xray-web
 
+> 本项目已经有些过时，若您有意愿继续维护，欢迎 PR。
+
 通过 Docker-compose 简易部署 [Xray-core](https://github.com/XTLS/Xray-core) 和 Web 服务（**以 Nginx + PostgreSQL + Typecho 博客程序为例**）。
 
 Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for example).
