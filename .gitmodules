@@ -1,0 +1,3 @@
+[submodule "nginx/www/typecho"]
+	path = nginx/www/typecho
+	url = https://github.com/typecho/typecho.git
