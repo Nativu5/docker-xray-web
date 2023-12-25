@@ -27,7 +27,7 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 * `php-fpm-pgsql` : 提供 PHP 支持;
 * `nginx` : 作为网页服务器;
 * `postgres` : 数据库;
-* `xray` : xray-core 程序；
+* `xray` : xray-core 程序。
 
 ## 关于镜像
 
@@ -62,7 +62,13 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
 0. 宿主机必须安装 docker, docker-compose，您必须拥有正确解析的域名和相应的证书; 
 
-1. 解压压缩包，切换到释放出的 `docker-xray-web` 目录下，共有 3 处配置文件需要用户自行修改：
+1. 克隆本仓库，并拉取子模块：
+
+   ```bash
+   git clone --recursive --depth=1 https://github.com/Nativu5/docker-xray-web.git
+   ```
+
+2. 切换到 `docker-xray-web` 目录下，共有 3 处配置文件需要用户自行修改：
 
    * `./docker-compose.yml` : 
    * `db` 一节中的数据库用户名、数据库用户密码、数据库名都可以由用户自定义；
@@ -70,9 +76,9 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
    * `./nginx/conf.d` : 需要将文件中所有 `yourdomain.com` 替换为用户自己的域名；
    * `./xray/config/config.json` : 需要自行填写 UUID 和邮箱。
 
-2. 将域名对应的证书放入 `./cert`，fullchain 文件保存为 `xray.crt`，key 文件保存为 `xray.key`；
+3. 将域名对应的证书放入 `./cert`，fullchain 文件保存为 `xray.crt`，key 文件保存为 `xray.key`；
 
-3. 在 `docker-xray-web` 下执行
+4. 在 `docker-xray-web` 下执行
 
    ```bash
    docker-compose up
@@ -80,15 +86,15 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
    正常情况下，所有容器都应能正常运行；
 
-4. 使用 `Ctrl-C` 停止所有容器，然后执行：
+5. 使用 `Ctrl-C` 停止所有容器，然后执行：
 
    ```bash
-   sudo chmod -R 777 ./nginx
+   sudo chmod -R 777 ./nginx/www/typecho
    ```
 
    更改权限以便稍后 `Typecho` 存取文件；
 
-5. 然后执行：
+6. 然后执行：
 
    ```bash
    docker-compose start
@@ -96,7 +102,7 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 
    重启容器，启动成功后打开浏览器访问预先设置的域名，即可安装 `Typecho` 。
 
-6. 选择任意支持 Xray 的客户端，根据 `./xray/config/config.json` 的内容生成客户端配置文件即可。
+7. 选择任意支持 Xray 的客户端，根据 `./xray/config/config.json` 的内容生成客户端配置文件即可。
 
 ## 注意事项
 
@@ -136,6 +142,6 @@ Docker-compose for Xray-core and a web service (Nginx + PostgreSQL + Typecho for
 > 本项目的其他副本（包括但不仅限于离线储存、fork 项目）在保持代码完全相同情况下，享有和本免责声明相同的免责条款；反之不然。因不当储存、复制和扩散导致的、无限的风险与责任由相关使用者承担，与本项目无关。
 
 
-### Infrastructure model
+## Infrastructure Model
 
 ![Infrastructure model](.infragenie/infrastructure_model.png)
